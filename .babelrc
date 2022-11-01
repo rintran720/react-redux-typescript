@@ -1,3 +1,29 @@
 {
-  "presets": ["@babel/env", "@babel/react", "@babel/typescript"]
+	"presets": ["@babel/env", "@babel/react", "@babel/typescript"],
+	"plugins": [
+		[
+			"module-resolver",
+			{
+				"root": ["./src"],
+				"extensions": [".js", ".ts", ".tsx", ".json"],
+				"alias": {
+					"tests": ["./tests/"],
+					"~/navigation": "./src/navigation",
+					"~/pages": "./src/pages",
+					"~/types": "./src/types",
+					"~/assets": "./src/assets",
+					"~/images": "./src/assets/image",
+					"~/store": "./src/store",
+					"~/constants": "./src/constants",
+					"~/theme": "./src/theme",
+					"~/languages": "./src/languages",
+					"~/api": "./src/api",
+					"~/utils": "./src/utils",
+					"~/components": "./src/modules/common/components",
+					"~/containers": "./src/modules/common/containers",
+					"~/modules": "./src/modules"
+				}
+			}
+		]
+	]
 }

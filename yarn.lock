@@ -7041,6 +7041,11 @@ mkdirp@~0.5.1:
   dependencies:
     minimist "^1.2.6"
 
+module-resolver@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/module-resolver/-/module-resolver-1.0.0.tgz#d412c0b66e08588cd39347a60c3c818bc9119fb5"
+  integrity sha512-W1RUbays629I+JtqOnjjiPCad5wsfLCW+CxcmgU+tsQSkKqmIFk1tHfmG3OauB1utmKasHCSIQ2Y2xBJTyGsjQ==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz"

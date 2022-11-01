@@ -61,6 +61,7 @@
 		"html-webpack-plugin": "^5.5.0",
 		"husky": "^8.0.1",
 		"lint-staged": "^13.0.3",
+		"module-resolver": "^1.0.0",
 		"prettier": "^2.7.1",
 		"sass": "^1.55.0",
 		"sass-loader": "^13.1.0",

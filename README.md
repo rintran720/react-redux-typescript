@@ -1,70 +1,96 @@
-# Getting Started with Create React App
+![plot](./readme/images/typescript.png) ![plot](./readme/images/react.png) ![plot](./readme/images/redux-tool.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Introduction
 
-## Available Scripts
+This source has been created for a dynamic React project. We used some similar technology:
 
-In the project directory, you can run:
+- [Reactjs](http://dev.nodeca.com) is core technology.
+- [Redux](http://dev.nodeca.com) & [Redux-toolkit](http://dev.nodeca.com) for control application state (it's easy if you wanna change to [MobX](http://dev.nodeca.com)). Remove it if you won't use.
+- [Typescript](http://dev.nodeca.com) to make our code to be more reliable.
+- [React Router](https://reactrouter.com/en/main) for navigation in application.
+- [Material UI](https://mui.com/) is our UIKit (do not depend on it), you can change to another without any effect.
 
-### `yarn start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# Let's start
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Recommended node 14 or later.
+- Clone this repo using
+  `git clone https://github.com/rintran720/react-redux-typescript.git <YOUR_PROJECT_NAME>`
+- Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`
+- Run `npm install` or `yarn` in order to install dependencies and clean the git repo.
+- At this point you can run `npm run dev` or `yarn dev` to run at deployment.
+- To run at production: `npm start` or `yarn start`.
 
-### `yarn test`
+# Document
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The application will be implemented in `./src` folder
 
-### `yarn build`
+## 1. App.tsx
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This file is master component of whole project. You should add all global providers in here.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 2. Assets
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+All assets will be saved at `./src/assets`.
 
-### `yarn eject`
+## 3. Navigation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To control screen views and register screens in you app. Update `RootNavigation` if you want to change the root navigation of whole application.
+Please check document at [React Router](https://reactrouter.com/en/main).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 4. Types
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Keep your application types in here.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 5. Modules
 
-## Learn More
+Divide your application to many domains, in `./src/modules` you keep the common domain and all custom domain.
+In each domain, we have:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `containers`: this is smart components with logic implement, can you components to show what you want. E.g. Facebook login button. To implement, you should use a component to show UI, keep all business logic in container and style at style file.
+- `components`: this is pure components only with UI logic, they will render base on props. The component use UI base at `common` domain, recommended do not use library directly.
+- `hooks`: useful custom hooks
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<br>
 
-### Code Splitting
+Get more information at [Smart and dumb component or Stateful and stateless component](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 6. Pages
 
-### Analyzing the Bundle Size
+Get all pages you have in here, this idea come from [NextJs](https://nextjs.org/).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 7. Constants
 
-### Making a Progressive Web App
+Keep constants in here.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 8. Utils - Helpers
 
-### Advanced Configuration
+In this folder, I write all util/helper functions.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 9. Api - HTTP Client
 
-### Deployment
+Make instance of Axios or other HTTP Client. More information at [Axios](https://github.com/axios/axios)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 10. Store - Application state
 
-### `yarn build` fails to minify
+To implement stores for application. In this case, I use [Redux](https://redux.js.org/) and [Redux-toolkit](https://redux-toolkit.js.org/) to manage application state.
+If you wanna change to [Mobx](https://mobx.js.org/README.html), be free to do it.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br>
+
+\*Note: Should use dispatch, useSelector,... in containers.
+
+## 11. Theme
+
+Implement theme of application in here.Please check at [Material UI](https://mui.com/)
+
+## 12. Language
+
+In this folder, we save all custom language. To use it please check [i18next](https://react.i18next.com/)
+
+<br>
+
+# DevOps
+
+Check devops process at [DevOps](./devops/README.md)

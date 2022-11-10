@@ -94,3 +94,17 @@ In this folder, we save all custom language. To use it please check [i18next](ht
 # DevOps
 
 Check devops process at [DevOps](./devops/README.md)
+
+# Notes
+
+## Strick Mode
+
+In development mode you can see React call API twice, Don't worry! THIS IS A FEATURE of React.StrictMode. It's will be fine in production. You can remove React.StrictMode provider to disable, but I'm not recommended.
+
+<br />
+
+Check more information at [React.StrictMode](https://reactjs.org/docs/strict-mode.html)
+
+<br/>
+
+Discus about this at [Reddit](https://www.reddit.com/r/reactjs/comments/ugzopd/why_is_my_fetch_getting_called_twice/)

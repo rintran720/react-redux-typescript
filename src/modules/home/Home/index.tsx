@@ -3,15 +3,14 @@ import bookAPI from '../hooks/useBookAPI';
 import HomeComponent from './component';
 
 function Home() {
-	const [getBooks, _books] = bookAPI.useGetBook();
+	const [getBooks, _books, loading] = bookAPI.useGetBook();
 	// const books = useAppSelector(listBookSelector);
 
 	useEffect(() => {
-		// console.log(getBooks);
 		getBooks();
 	}, [getBooks]);
 
-	console.log('render', _books);
+	console.log('render', _books, loading);
 
 	return <HomeComponent />;
 }

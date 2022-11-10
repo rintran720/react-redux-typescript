@@ -1,0 +1,11 @@
+version: '3.7'
+services:
+  react_site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: react_application
+    ports:
+      - '80:80'
+    environment:
+      - NODE_ENV=production

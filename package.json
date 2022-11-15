@@ -9,7 +9,8 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
 		"lint": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
-		"format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+		"format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+		"gen-api": "openapi --input ./src/api/swagger/openapi.json --output ./src/api/swagger --client axios"
 	},
 	"author": {
 		"name": "John Smith",
@@ -80,6 +81,7 @@
 		"husky": "^8.0.1",
 		"lint-staged": "^13.0.3",
 		"module-resolver": "^1.0.0",
+		"openapi-typescript-codegen": "^0.23.0",
 		"prettier": "^2.7.1",
 		"sass": "^1.55.0",
 		"sass-loader": "^13.1.0",

@@ -28,5 +28,5 @@
 		"spaced-comment": "error",
 		"no-duplicate-imports": "error"
 	},
-	"ignorePatterns": ["webpack.config.js", "**/vendor/*.js"]
+	"ignorePatterns": ["webpack.config.js", "**/vendor/*.js", "**/openapi.json"]
 }

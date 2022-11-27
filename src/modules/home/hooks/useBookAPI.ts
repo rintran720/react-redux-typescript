@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import Axios from '~/api/axios';
+import Axios from '~/api/manual/axios';
 import { bookActions } from '~/store/book/book.slice';
 import { useAppDispatch } from '~/store/config';
 import { APIResponse, Book } from '~/types/index';

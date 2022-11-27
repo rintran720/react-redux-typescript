@@ -14,14 +14,14 @@ function useAPI<T = any, R = T>({ request, transform }: RequestIntoAPIHook<T, R>
 	});
 
 	const call = useCallback(
-		(callback: (cbParams?: R) => void = voidCallback) => {
+		(callback?: (cbParams?: R) => void) => {
 			setRes({ loading: true, error: null, data: null });
 			request
 				.then((response) => {
 					if (response) {
 						const data = transform ? transform(response) : (response as R);
 						setRes({ loading: false, data, error: null });
-						callback(data);
+						callback?.(data);
 					}
 				})
 				.catch((error) => {
@@ -34,7 +34,4 @@ function useAPI<T = any, R = T>({ request, transform }: RequestIntoAPIHook<T, R>
 	return [call, res.data, res.loading, res.error] as const;
 }
 
-export function voidCallback() {
-	// nothing
-}
 export default useAPI;

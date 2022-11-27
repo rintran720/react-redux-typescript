@@ -1,13 +1,11 @@
 import { useCallback, useState } from 'react';
 import { APIResponse } from '~/types/index';
+import { axiosTransform } from '~/api/manual/axios';
+import { AxiosResponse } from 'axios';
+import { RequestIntoAPIHook, voidCallback } from './useAPI';
 
-export interface RequestIntoAPIHook<T, R> {
-	request: (params: any) => Promise<T>;
-	transform?: (res: T) => R;
-}
-
-function useAPI<T = any, R = any>({ request, transform }: RequestIntoAPIHook<T, R>) {
-	const [res, setRes] = useState<APIResponse<R>>({
+function useAxiosAPI<T = any>({ request }: RequestIntoAPIHook<AxiosResponse<T>, T>) {
+	const [res, setRes] = useState<APIResponse<T>>({
 		loading: false,
 		data: null,
 		error: null,
@@ -19,7 +17,7 @@ function useAPI<T = any, R = any>({ request, transform }: RequestIntoAPIHook<T, 
 			request(params)
 				.then((response) => {
 					if (response) {
-						setRes({ loading: false, data: transform ? transform(response) : (response as R), error: null });
+						setRes({ loading: false, data: axiosTransform<T>(response), error: null });
 						callback();
 					}
 				})
@@ -27,13 +25,10 @@ function useAPI<T = any, R = any>({ request, transform }: RequestIntoAPIHook<T, 
 					setRes({ loading: false, data: null, error });
 				});
 		},
-		[request, transform],
+		[request],
 	);
 
 	return [call, res.data, res.loading, res.error] as const;
 }
 
-export function voidCallback() {
-	// nothing
-}
-export default useAPI;
+export default useAxiosAPI;

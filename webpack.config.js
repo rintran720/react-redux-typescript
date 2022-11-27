@@ -1,7 +1,6 @@
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -63,7 +62,6 @@ const config = {
 			favicon: './public/favicon.ico',
 			inject: 'body',
 		}),
-		new WebpackManifestPlugin(),
 	],
 };
 

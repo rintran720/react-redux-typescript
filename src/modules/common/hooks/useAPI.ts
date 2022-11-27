@@ -1,12 +1,12 @@
 import { useCallback, useState } from 'react';
 import { APIResponse } from '~/types/index';
 
-export interface RequestIntoAPIHook<T, R> {
-	request: (params: any) => Promise<T>;
+export interface RequestIntoAPIHook<T, R = T> {
+	request: Promise<T>;
 	transform?: (res: T) => R;
 }
 
-function useAPI<T = any, R = any>({ request, transform }: RequestIntoAPIHook<T, R>) {
+function useAPI<T = any, R = T>({ request, transform }: RequestIntoAPIHook<T, R>) {
 	const [res, setRes] = useState<APIResponse<R>>({
 		loading: false,
 		data: null,
@@ -14,13 +14,14 @@ function useAPI<T = any, R = any>({ request, transform }: RequestIntoAPIHook<T, 
 	});
 
 	const call = useCallback(
-		(callback: (cbParams?: any) => void = voidCallback, ...params: any[]) => {
+		(callback: (cbParams?: R) => void = voidCallback) => {
 			setRes({ loading: true, error: null, data: null });
-			request(params)
+			request
 				.then((response) => {
 					if (response) {
-						setRes({ loading: false, data: transform ? transform(response) : (response as R), error: null });
-						callback();
+						const data = transform ? transform(response) : (response as R);
+						setRes({ loading: false, data, error: null });
+						callback(data);
 					}
 				})
 				.catch((error) => {

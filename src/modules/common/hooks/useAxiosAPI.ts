@@ -1,10 +1,10 @@
-import { useCallback, useState } from 'react';
-import { APIResponse } from '~/types/index';
-import { axiosTransform } from '~/api/manual/axios';
 import { AxiosResponse } from 'axios';
+import { useCallback, useState } from 'react';
+import { axiosTransform } from '~/api/manual/axios';
+import { APIResponse } from '~/types/index';
 import { RequestIntoAPIHook, voidCallback } from './useAPI';
 
-function useAxiosAPI<T = any>({ request }: RequestIntoAPIHook<AxiosResponse<T>, T>) {
+function useAxiosAPI<T>({ request }: RequestIntoAPIHook<AxiosResponse<T>, T>) {
 	const [res, setRes] = useState<APIResponse<T>>({
 		loading: false,
 		data: null,
@@ -12,13 +12,14 @@ function useAxiosAPI<T = any>({ request }: RequestIntoAPIHook<AxiosResponse<T>, 
 	});
 
 	const call = useCallback(
-		(callback: (cbParams?: any) => void = voidCallback, ...params: any[]) => {
+		(callback: (cbParams?: T) => void = voidCallback) => {
 			setRes({ loading: true, error: null, data: null });
-			request(params)
+			request
 				.then((response) => {
 					if (response) {
-						setRes({ loading: false, data: axiosTransform<T>(response), error: null });
-						callback();
+						const data = axiosTransform<T>(response);
+						setRes({ loading: false, data, error: null });
+						callback(data);
 					}
 				})
 				.catch((error) => {

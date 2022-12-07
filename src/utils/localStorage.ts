@@ -3,9 +3,10 @@ import { ACCESS_TOKEN_STORAGE_KEY } from '../constants/config.const';
 
 export async function getAccessToken() {
 	try {
-		return await storage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+		const token = await storage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+		return token || 'default token';
 	} catch (e) {
-		return null;
+		return 'error token';
 	}
 }
 

@@ -13,10 +13,10 @@ function HomeComponent() {
       <Link to='/profile'>
         <Button color={'primary'}>Go to Profile</Button>
       </Link>
-      <Link to='/profile'>
+      <Link to='/settings'>
         <Button color={'success'}>Go to Settings</Button>
       </Link>
-      <Link to='/profile'>
+      <Link to='/notifications'>
         <Button color={'secondary'}>Go to Notification</Button>
       </Link>
     </div>

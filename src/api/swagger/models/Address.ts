@@ -3,8 +3,8 @@
 /* eslint-disable */
 
 export type Address = {
-	street?: string;
-	city?: string;
-	state?: string;
-	zip?: string;
+  street?: string;
+  city?: string;
+  state?: string;
+  zip?: string;
 };

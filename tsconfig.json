@@ -1,23 +1,23 @@
 {
-	"compilerOptions": {
-		"target": "es6",
-		"module": "commonjs",
-		"jsx": "react",
-		"moduleResolution": "node",
-		"strict": true,
-		"noEmit": true,
-		"allowJs": true,
-		"skipLibCheck": true,
-		"isolatedModules": true,
-		"esModuleInterop": true,
-		"baseUrl": ".",
-		"paths": {
-			"~/components/*": ["src/modules/common/components/*"],
-			"~/containers/*": ["src/modules/common/containers/*"],
-			"~/hooks/*": ["src/modules/common/hooks/*"],
-			"~/*": ["src/*"]
-		}
-	},
-	"include": ["src", "react-app-env.d.ts"],
-	"exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js", "webpack.config.js"]
+  "compilerOptions": {
+    "target": "es6",
+    "module": "commonjs",
+    "jsx": "react",
+    "moduleResolution": "node",
+    "strict": true,
+    "noEmit": true,
+    "allowJs": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/components/*": ["src/modules/common/components/*"],
+      "~/containers/*": ["src/modules/common/containers/*"],
+      "~/hooks/*": ["src/modules/common/hooks/*"],
+      "~/*": ["src/*"]
+    }
+  },
+  "include": ["src", "react-app-env.d.ts"],
+  "exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js", "webpack.config.js"]
 }

@@ -3,6 +3,6 @@
 /* eslint-disable */
 
 export type Tag = {
-	id?: number;
-	name?: string;
+  id?: number;
+  name?: string;
 };

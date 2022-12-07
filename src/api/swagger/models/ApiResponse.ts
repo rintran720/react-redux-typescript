@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 export type ApiResponse = {
-	code?: number;
-	type?: string;
-	message?: string;
+  code?: number;
+  type?: string;
+  message?: string;
 };

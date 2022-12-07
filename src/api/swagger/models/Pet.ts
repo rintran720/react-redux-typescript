@@ -6,24 +6,24 @@ import type { Category } from './Category';
 import type { Tag } from './Tag';
 
 export type Pet = {
-	id?: number;
-	name: string;
-	category?: Category;
-	photoUrls: Array<string>;
-	tags?: Array<Tag>;
-	/**
-	 * pet status in the store
-	 */
-	status?: Pet.status;
+  id?: number;
+  name: string;
+  category?: Category;
+  photoUrls: Array<string>;
+  tags?: Array<Tag>;
+  /**
+   * pet status in the store
+   */
+  status?: Pet.status;
 };
 
 export namespace Pet {
-	/**
-	 * pet status in the store
-	 */
-	export enum status {
-		AVAILABLE = 'available',
-		PENDING = 'pending',
-		SOLD = 'sold',
-	}
+  /**
+   * pet status in the store
+   */
+  export enum status {
+    AVAILABLE = 'available',
+    PENDING = 'pending',
+    SOLD = 'sold',
+  }
 }

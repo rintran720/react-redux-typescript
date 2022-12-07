@@ -7,37 +7,37 @@ import useAxiosAPI from '../../common/hooks/useAxiosAPI';
 import HomeComponent from './component';
 
 function Home() {
-	// const books = useAppSelector(listBookSelector);
+  // const books = useAppSelector(listBookSelector);
 
-	// Start: Example 1 to use useAPI hook
-	const petsTransform = useCallback((pets: Pet[]): Pet[] => {
-		return pets.map((pet) => ({ ...pet, name: `${pet.name}-mapped` }));
-	}, []);
-	const findPetsByStatusPromise = useMemo(() => PetService.findPetsByStatus('available'), []); // must use useMemo, useCallback is bad choice
-	const [findPetsByStatusFetch, pets] = useAPI<Pet[]>({
-		request: findPetsByStatusPromise,
-		transform: petsTransform, // optional
-	});
+  // Start: Example 1 to use useAPI hook
+  const petsTransform = useCallback((pets: Pet[]): Pet[] => {
+    return pets.map((pet) => ({ ...pet, name: `${pet.name}-mapped` }));
+  }, []);
+  const findPetsByStatusPromise = useMemo(() => PetService.findPetsByStatus('available'), []); // must use useMemo, useCallback is bad choice
+  const [findPetsByStatusFetch, pets] = useAPI<Pet[]>({
+    request: findPetsByStatusPromise,
+    transform: petsTransform, // optional
+  });
 
-	useEffect(() => {
-		findPetsByStatusFetch();
-	}, [findPetsByStatusFetch]);
-	// End: Example 1 to use useAPI hook
+  useEffect(() => {
+    findPetsByStatusFetch();
+  }, [findPetsByStatusFetch]);
+  // End: Example 1 to use useAPI hook
 
-	// Start: Example 2 to use simple useAxiosAPI hook with callback
-	const getBooksPromise = useMemo(() => getBooksAPI(), []); // must use useMemo, useCallback is bad choice
-	const [getBooksFetch, books] = useAxiosAPI<Book[]>({
-		request: getBooksPromise,
-	});
+  // Start: Example 2 to use simple useAxiosAPI hook with callback
+  const getBooksPromise = useMemo(() => getBooksAPI(), []); // must use useMemo, useCallback is bad choice
+  const [getBooksFetch, books] = useAxiosAPI<Book[]>({
+    request: getBooksPromise,
+  });
 
-	useEffect(() => {
-		getBooksFetch((r) => console.log('callback', r));
-	}, [getBooksFetch]);
-	// End: Example 2 to use useAPI hook
+  useEffect(() => {
+    getBooksFetch((r) => console.log('callback', r));
+  }, [getBooksFetch]);
+  // End: Example 2 to use useAPI hook
 
-	console.log('render', pets, books);
+  console.log('render', pets, books);
 
-	return <HomeComponent />;
+  return <HomeComponent />;
 }
 
 export default Home;

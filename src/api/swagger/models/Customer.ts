@@ -5,7 +5,7 @@
 import type { Address } from './Address';
 
 export type Customer = {
-	id?: number;
-	username?: string;
-	address?: Array<Address>;
+  id?: number;
+  username?: string;
+  address?: Array<Address>;
 };

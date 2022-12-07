@@ -2,7 +2,7 @@ import React from 'react';
 import NotificationsComponent from './component';
 
 function Notifications() {
-	return <NotificationsComponent />;
+  return <NotificationsComponent />;
 }
 
 export default Notifications;

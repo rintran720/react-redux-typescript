@@ -9,15 +9,15 @@ import theme from '~/theme/config';
 import ThemeProvider from '~/theme/ThemeProvider';
 
 const App: () => ReactElement = () => {
-	return (
-		<Provider store={store}>
-			<PersistGate persistor={persistor}>
-				<ThemeProvider theme={theme}>
-					<RootNavigation />
-				</ThemeProvider>
-			</PersistGate>
-		</Provider>
-	);
+  return (
+    <Provider store={store}>
+      <PersistGate persistor={persistor}>
+        <ThemeProvider theme={theme}>
+          <RootNavigation />
+        </ThemeProvider>
+      </PersistGate>
+    </Provider>
+  );
 };
 
 export default App;

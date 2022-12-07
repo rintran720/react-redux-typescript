@@ -9,14 +9,14 @@ import { isProduction } from '../utils/env';
 import { bookReducers } from './book/book.slice';
 
 const rootReducer = combineReducers({
-	book: bookReducers,
+  book: bookReducers,
 });
 
 const persistConfig = {
-	version: 1,
-	key: 'root',
-	storage: Storage,
-	stateReconciler: autoMergeLevel2,
+  version: 1,
+  key: 'root',
+  storage: Storage,
+  stateReconciler: autoMergeLevel2,
 };
 
 export type CombinedAppState = CombinedState<{ book: BookState }>;
@@ -24,21 +24,21 @@ export type CombinedAppState = CombinedState<{ book: BookState }>;
 const persistedReducer = persistReducer<CombinedAppState, AnyAction>(persistConfig, rootReducer);
 
 export const store = configureStore({
-	reducer: persistedReducer,
-	devTools: !isProduction(),
-	middleware: (getDefaultMiddleware: any) => {
-		const defaultMiddlewares = getDefaultMiddleware({
-			serializableCheck: {
-				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-			},
-		});
+  reducer: persistedReducer,
+  devTools: !isProduction(),
+  middleware: (getDefaultMiddleware: any) => {
+    const defaultMiddlewares = getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    });
 
-		// if (!isProduction()) {
-		// 	const createDebugger = require('redux-flipper').default;
-		// 	defaultMiddlewares.push(createDebugger());
-		// }
-		return defaultMiddlewares;
-	},
+    // if (!isProduction()) {
+    // 	const createDebugger = require('redux-flipper').default;
+    // 	defaultMiddlewares.push(createDebugger());
+    // }
+    return defaultMiddlewares;
+  },
 });
 
 export const persistor = persistStore(store);

@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server",
     "build": "cross-env NODE_ENV=production webpack",
+    "prestart": "rimraf ./dist",
     "start": "yarn build && serve dist",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -74,6 +75,7 @@
     "brotli-webpack-plugin": "^1.1.0",
     "commitlint": "^17.2.0",
     "compression-webpack-plugin": "^10.0.0",
+    "copy-webpack-plugin": "^11.0.0",
     "cross-env": "^7.0.3",
     "css-loader": "^6.7.1",
     "eslint": "^8.26.0",
@@ -88,6 +90,7 @@
     "module-resolver": "^1.0.0",
     "openapi-typescript-codegen": "^0.23.0",
     "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
     "sass": "^1.55.0",
     "sass-loader": "^13.1.0",
     "serve": "^14.0.1",

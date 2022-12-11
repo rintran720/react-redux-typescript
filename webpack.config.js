@@ -1,13 +1,16 @@
-const { resolve } = require('path');
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { DefinePlugin } = require('webpack');
 
 const isProd = process.env.NODE_ENV === 'production';
+
+require('dotenv').config({ path: isProd ? 'devops/.env.production' : 'devops/.env.development' });
 
 const config = {
   mode: isProd ? 'production' : 'development',
@@ -15,7 +18,7 @@ const config = {
     index: './src/index.tsx',
   },
   output: {
-    path: resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
   },
   resolve: {
@@ -61,12 +64,21 @@ const config = {
     ],
   },
   plugins: [
+    new DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+    }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
       filename: 'index.html',
       favicon: './public/favicon.ico',
       inject: 'body',
     }),
+    // new BundleAnalyzerPlugin(), // View bundle.js stat
+  ],
+};
+
+if (isProd) {
+  config.plugins.push(
     new CopyWebpackPlugin({
       patterns: [
         { from: 'public/logo192.png' },
@@ -91,12 +103,10 @@ const config = {
     new WorkboxWebpackPlugin.InjectManifest({
       swSrc: './public/sw.js',
       swDest: 'sw.js',
+      maximumFileSizeToCacheInBytes: 25 * 1024 * 1024, // 25 MB
     }),
-    // new BundleAnalyzerPlugin(),
-  ],
-};
+  );
 
-if (isProd) {
   config.optimization = {
     minimizer: [new TerserWebpackPlugin()],
   };

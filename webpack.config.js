@@ -4,6 +4,7 @@ const TerserWebpackPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -75,7 +76,7 @@ const config = {
       ],
     }),
     new CompressionPlugin({
-      filename: '[path].gz[query]',
+      filename: '[path][name].gz[query]',
       algorithm: 'gzip',
       test: /\.(js|css|html|svg)$/,
       threshold: 8192,
@@ -86,6 +87,10 @@ const config = {
       test: /\.(js|css|html|svg)$/,
       threshold: 10240,
       minRatio: 0.8,
+    }),
+    new WorkboxWebpackPlugin.InjectManifest({
+      swSrc: './public/sw.js',
+      swDest: 'sw.js',
     }),
     // new BundleAnalyzerPlugin(),
   ],

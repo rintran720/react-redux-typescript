@@ -5,6 +5,9 @@ import App from './App';
 import './index.d';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
+import registerServiceWorker from './serviceWorkerRegistration';
+
+registerServiceWorker();
 
 if (process.env.NODE_ENV === 'production') {
   disableReactDevTools();

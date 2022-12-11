@@ -1,6 +1,11 @@
 const { resolve } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
+const BrotliPlugin = require('brotli-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -62,6 +67,32 @@ const config = {
       favicon: './public/favicon.ico',
       inject: 'body',
     }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public/logo192.png' },
+        { from: 'public/logo512.png' },
+        { from: 'public/manifest.json' },
+        { from: 'public/robots.txt' },
+      ],
+    }),
+    new CompressionPlugin({
+      filename: '[path][name].gz[query]',
+      algorithm: 'gzip',
+      test: /\.(js|css|html|svg)$/,
+      threshold: 8192,
+      minRatio: 0.8,
+    }),
+    new BrotliPlugin({
+      asset: '[path].br[query]',
+      test: /\.(js|css|html|svg)$/,
+      threshold: 10240,
+      minRatio: 0.8,
+    }),
+    new WorkboxWebpackPlugin.InjectManifest({
+      swSrc: './public/sw.js',
+      swDest: 'sw.js',
+    }),
+    // new BundleAnalyzerPlugin(),
   ],
 };
 

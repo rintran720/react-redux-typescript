@@ -1,9 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { disableReactDevTools } from '@fvilers/disable-react-devtools';
 import App from './App';
 import './index.d';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
+import registerServiceWorker from './serviceWorkerRegistration';
+
+registerServiceWorker();
+
+if (process.env.NODE_ENV === 'production') {
+  disableReactDevTools();
+}
 
 const rootEl = document.getElementById('root');
 if (rootEl) {

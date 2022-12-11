@@ -35,7 +35,7 @@ function Home() {
   }, [getBooksFetch]);
   // End: Example 2 to use useAPI hook
 
-  console.log('render', pets, books);
+  // console.log('render', pets, books);
 
   return <HomeComponent />;
 }

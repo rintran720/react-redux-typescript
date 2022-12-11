@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { API_URL } from '~/constants/config.const';
+import { API_URL } from '~/utils/env';
 import { getAccessToken } from '~/utils/localStorage';
 
 const Axios = axios.create({

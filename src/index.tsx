@@ -6,11 +6,11 @@ import './index.d';
 import './index.scss';
 import reportWebVitals from './reportWebVitals';
 import registerServiceWorker from './serviceWorkerRegistration';
+import { isProduction } from '~/utils/env';
 
-registerServiceWorker();
-
-if (process.env.NODE_ENV === 'production') {
+if (isProduction()) {
   disableReactDevTools();
+  registerServiceWorker();
 }
 
 const rootEl = document.getElementById('root');

@@ -31,7 +31,7 @@ function Home() {
   });
 
   useEffect(() => {
-    getBooksFetch((r) => console.log('callback', r));
+    getBooksFetch((r) => null);
   }, [getBooksFetch]);
   // End: Example 2 to use useAPI hook
 

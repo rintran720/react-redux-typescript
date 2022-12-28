@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Text } from '~/components/core';
+import { Button, Typography } from '~/components/core';
 import { Link } from '~/components/route';
 import useTheme from '~/theme/useTheme';
 import './styles.scss';
@@ -9,7 +9,7 @@ function HomeComponent() {
   // const themedStyles = styles(theme);
   return (
     <div>
-      <Text>Click below button to navigate to other screen</Text>
+      <Typography>Click below button to navigate to other screen</Typography>
       <Link to='/profile'>
         <Button color={'primary'}>Go to Profile</Button>
       </Link>

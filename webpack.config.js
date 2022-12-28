@@ -5,7 +5,7 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const BrotliPlugin = require('brotli-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
-// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { DefinePlugin } = require('webpack');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -19,7 +19,7 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    filename: '[name].dr.js',
   },
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -54,7 +54,7 @@ const config = {
         ],
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|webp)$/i,
         use: [
           {
             loader: 'file-loader',
@@ -73,7 +73,6 @@ const config = {
       favicon: './public/favicon.ico',
       inject: 'body',
     }),
-    // new BundleAnalyzerPlugin(), // View bundle.js stat
   ],
 };
 
@@ -85,6 +84,7 @@ if (isProd) {
         { from: 'public/logo512.png' },
         { from: 'public/manifest.json' },
         { from: 'public/robots.txt' },
+        { from: 'public/serve.json' },
       ],
     }),
     new CompressionPlugin({
@@ -105,6 +105,7 @@ if (isProd) {
       swDest: 'sw.js',
       maximumFileSizeToCacheInBytes: 25 * 1024 * 1024, // 25 MB
     }),
+    // new BundleAnalyzerPlugin(), // View bundle.js stat
   );
 
   config.optimization = {
@@ -116,6 +117,7 @@ if (isProd) {
     open: true,
     hot: true,
     compress: true,
+    historyApiFallback: true,
     // stats: "errors-only",
     // overlay: true,
   };

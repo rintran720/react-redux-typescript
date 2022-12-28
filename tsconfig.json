@@ -12,9 +12,23 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
+      "~/navigation/*": ["src/navigation/*"],
+      "~/pages/*": ["src/pages/*"],
+      "~/types/*": ["src/types/*"],
+      "~/assets/*": ["src/assets/*"],
+      "~/images/*": ["src/assets/images/*"],
+      "~/icons/*": ["src/assets/icons/*"],
+      "~/store/*": ["src/store/*"],
+      "~/constants/*": ["src/constants/*"],
+      "~/theme/*": ["src/theme/*"],
+      "~/languages/*": ["src/languages/*"],
+      "~/api/*": ["src/api/*"],
+      "~/utils/*": ["src/utils/*"],
       "~/components/*": ["src/modules/common/components/*"],
       "~/containers/*": ["src/modules/common/containers/*"],
       "~/hooks/*": ["src/modules/common/hooks/*"],
+      "~/hocs/*": ["src/modules/common/hocs/*"],
+      "~/modules/*": ["src/modules/*"],
       "~/*": ["src/*"]
     }
   },

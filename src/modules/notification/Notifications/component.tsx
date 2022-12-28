@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text } from '~/components/core';
+import { Typography } from '~/components/core';
 import useTheme from '~/theme/useTheme';
 import './styles.scss';
 
@@ -8,7 +8,7 @@ function NotificationsComponent() {
   // const themedStyles = styles(theme);
   return (
     <div>
-      <Text>Notifications</Text>
+      <Typography>Notifications</Typography>
     </div>
   );
 }

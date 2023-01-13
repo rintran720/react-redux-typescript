@@ -3,10 +3,17 @@ import getBooksAPI from '~/api/manual/book/getBooksAPI';
 import { Pet, PetService } from '~/api/swagger';
 import useAPI from '~/hooks/useAPI';
 import { Book } from '~/types';
-import useAxiosAPI from '../../common/hooks/useAxiosAPI';
+import useAxiosAPI from '~/hooks/useAxiosAPI';
 import HomeComponent from './component';
+import { AppDispatch } from '~/store/config';
+import { themeActions } from '~/store/theme/theme.slice';
+import { listBookSelector } from '~/store/theme/theme.selector';
 
-function Home() {
+export interface HomeProps {
+  name?: string;
+}
+
+function Home({ name }: HomeProps) {
   // const books = useAppSelector(listBookSelector);
 
   // Start: Example 1 to use useAPI hook
@@ -37,7 +44,7 @@ function Home() {
 
   // console.log('render', pets, books);
 
-  return <HomeComponent />;
+  return <HomeComponent name={name} />;
 }
 
 export default Home;

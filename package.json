@@ -11,7 +11,6 @@
     "eject": "react-scripts eject",
     "lint": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json,scss}' --config ./.prettierrc",
-    "gen-api:petstore": "openapi --input ./src/api/swagger/openapi.json --output ./src/api/swagger --client axios --indent 2",
     "gen-api:pet": "openapi --input ./src/api/petstore/openapi.json --output ./src/api/petstore --name PetStoreServer --client axios  --indent 2"
   },
   "author": {

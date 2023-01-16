@@ -4,6 +4,11 @@ export type APIResponse<T> = {
   data: T | null;
 };
 
+export type ReduxAction<T> = {
+  payload: T;
+  type: string;
+};
+
 export interface Book {
   id: string;
   name: string;
@@ -13,4 +18,9 @@ export interface Book {
 
 export interface BookState {
   list: Book[];
+}
+
+export type ThemeMode = 'dark' | 'light';
+export interface ThemeState {
+  mode: ThemeMode;
 }

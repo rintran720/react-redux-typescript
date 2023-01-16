@@ -1,14 +1,11 @@
 import React from 'react';
-import { Text } from '~/components/core';
-import useTheme from '~/theme/useTheme';
+import { Typography } from '~/components/core';
 import './styles.scss';
 
 function NotificationsComponent() {
-  const theme = useTheme();
-  // const themedStyles = styles(theme);
   return (
     <div>
-      <Text>Notifications</Text>
+      <Typography>Notifications</Typography>
     </div>
   );
 }

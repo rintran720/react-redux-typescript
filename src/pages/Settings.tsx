@@ -1,5 +1,5 @@
-import React from 'react';
-import Settings from '~/modules/setting/Settings';
+import React, { lazy } from 'react';
+const Settings = lazy(() => import('~/modules/setting/Settings'));
 
 export default function SettingsPage() {
   return <Settings />;

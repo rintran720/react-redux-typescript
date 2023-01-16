@@ -1,15 +1,52 @@
-import React from 'react';
-import { Button, Text } from '~/components/core';
+import React, { useCallback } from 'react';
+import { Button, Typography } from '~/components/core';
 import { Link } from '~/components/route';
-import useTheme from '~/theme/useTheme';
 import './styles.scss';
+import { useAppTheme, styled } from '~/theme/core';
 
-function HomeComponent() {
-  const theme = useTheme();
-  // const themedStyles = styles(theme);
+const PREFIX = 'HomeComponent';
+const classes = {
+  root: `${PREFIX}-root`,
+  cta: `${PREFIX}-cta`,
+  content: `${PREFIX}-content`,
+  intro: `${PREFIX}-intro`,
+};
+
+const Root = styled('div')(() => ({
+  [`&.${classes.root}`]: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+}));
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  [`&.${classes.cta}`]: {
+    color: theme.palette.primary.dark,
+  },
+  [`&.${classes.content}`]: {
+    color: theme.palette.primary.light,
+  },
+  [`&.${classes.intro}`]: {
+    backgroundColor: theme.palette.primary.light,
+  },
+}));
+
+export interface HomeComponentProps {
+  name?: string;
+}
+
+function HomeComponent({ name }: HomeComponentProps) {
+  const { mode, setAppTheme } = useAppTheme();
+  const changeThemeMode = useCallback(() => {
+    setAppTheme(mode == 'dark' ? 'light' : 'dark');
+  }, [mode, setAppTheme]);
+
   return (
-    <div>
-      <Text>Click below button to navigate to other screen</Text>
+    <Root className={classes.root}>
+      <StyledTypography className={classes.content}>Hi {name}, Click to change theme of website</StyledTypography>
+      <Button onClick={changeThemeMode}>{mode}</Button>
+      <StyledTypography>Click below button to navigate to other screen</StyledTypography>
       <Link to='/profile'>
         <Button color={'primary'}>Go to Profile</Button>
       </Link>
@@ -19,7 +56,7 @@ function HomeComponent() {
       <Link to='/notifications'>
         <Button color={'secondary'}>Go to Notification</Button>
       </Link>
-    </div>
+    </Root>
   );
 }
 

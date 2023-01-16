@@ -1,0 +1,29 @@
+.top-bar {
+  width: 100%;
+  z-index: 10;
+  position: relative;
+  margin-bottom: 60px;
+
+  &__content {
+    position: fixed;
+    height: 60px;
+    padding: 10px;
+    width: calc(100vw - 240px);
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e5e9ec;
+    justify-content: space-between;
+  }
+
+  .account {
+    display: flex;
+    align-items: center;
+    &__name {
+      font-size: 1.1rem;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .avatar {
+    }
+  }
+}

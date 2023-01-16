@@ -1,0 +1,10 @@
+.not-found-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .image {
+    padding-top: 5%;
+    width: 55%;
+    height: auto;
+  }
+}

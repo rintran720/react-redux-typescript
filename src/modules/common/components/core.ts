@@ -16,9 +16,17 @@ import {
   Switch,
   Tab,
   Tooltip,
+  Typography,
+  CircularProgress,
+  Box,
+  Grid,
+  IconButton,
+  MenuList,
+  Paper,
+  MenuItem,
 } from '@mui/material';
 import { Button } from './Button';
-import { Text } from './SanFranciscoText';
+import Spinner from './Spinner';
 
 export {
   Avatar,
@@ -38,6 +46,14 @@ export {
   Switch,
   Tab,
   Tooltip,
-  Text,
   Button,
+  Typography,
+  CircularProgress,
+  Spinner,
+  Box,
+  Grid,
+  IconButton,
+  Paper,
+  MenuList,
+  MenuItem,
 };

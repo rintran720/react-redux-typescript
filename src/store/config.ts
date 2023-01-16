@@ -3,13 +3,15 @@ import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { AnyAction, CombinedState, combineReducers } from 'redux';
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist';
 import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
-import { BookState } from '~/types';
+import { BookState, ThemeState } from '~/types';
 import { Storage } from '~/utils/localStorage';
 import { isProduction } from '../utils/env';
 import { bookReducers } from './book/book.slice';
+import { themeReducers } from './theme/theme.slice';
 
 const rootReducer = combineReducers({
   book: bookReducers,
+  theme: themeReducers,
 });
 
 const persistConfig = {
@@ -19,13 +21,14 @@ const persistConfig = {
   stateReconciler: autoMergeLevel2,
 };
 
-export type CombinedAppState = CombinedState<{ book: BookState }>;
+export type CombinedAppState = CombinedState<{ book: BookState; theme: ThemeState }>;
 
 const persistedReducer = persistReducer<CombinedAppState, AnyAction>(persistConfig, rootReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
   devTools: !isProduction(),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   middleware: (getDefaultMiddleware: any) => {
     const defaultMiddlewares = getDefaultMiddleware({
       serializableCheck: {

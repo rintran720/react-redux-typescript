@@ -18,7 +18,7 @@ This source has been created for a dynamic React project. We used some similar t
 - Clone this repo using
   `git clone https://github.com/rintran720/react-redux-typescript.git <YOUR_PROJECT_NAME>`
 - Move to the appropriate directory: `cd <YOUR_PROJECT_NAME>`
-- Run `npm install` or `yarn` in order to install dependencies and clean the git repo.
+- Run `npm ci` (recommended) or `yarn` in order to install dependencies and clean the git repo.
 - At this point you can run `npm run dev` or `yarn dev` to run at deployment.
 - To run at production: `npm start` or `yarn start`.
 

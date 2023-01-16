@@ -1,20 +1,19 @@
 /* eslint-disable no-duplicate-imports */
-import type { ReactElement } from 'react';
+import { lazy, ReactElement } from 'react';
 import React from 'react';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import RootNavigation from '~/navigation/RootNavigation';
 import { persistor, store } from '~/store/config';
-import theme from '~/theme/config';
-import ThemeProvider from '~/theme/ThemeProvider';
+import withSuspense from '~/hocs/withSuspense';
+import { ThemeWithConfigProvider } from '~/theme/core';
+
+const RootNavigation = lazy(() => import('~/navigation/RootNavigation'));
 
 const App: () => ReactElement = () => {
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <ThemeProvider theme={theme}>
-          <RootNavigation />
-        </ThemeProvider>
+        <ThemeWithConfigProvider>{withSuspense(RootNavigation)}</ThemeWithConfigProvider>
       </PersistGate>
     </Provider>
   );

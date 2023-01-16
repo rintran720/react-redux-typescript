@@ -3,10 +3,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'; // import '~/la
 import withSuspense from '~/hocs/withSuspense';
 import './style.scss';
 import { Box } from '~/components/core';
-// const Box = lazy(() => {
-//   import { Box } from '~/components/core';
-//   return Box;
-// });
+import { styled } from '~/theme/core';
+
 const ErrorBoundary = lazy(() => import('~/containers/ErrorBoundary'));
 const Home = lazy(() => import('~/pages/Home'));
 const Dashboard = lazy(() => import('~/pages/Dashboard'));
@@ -17,10 +15,17 @@ const NotFound = lazy(() => import('~/pages/NotFound'));
 const NavBar = lazy(() => import('~/containers/NavBar'));
 const TopBar = lazy(() => import('~/containers/TopBar'));
 
+const StyledBox = styled(Box)(({ theme }) => ({
+  ['&']: {
+    color: theme.palette.common.black,
+    backgroundColor: theme.palette.common.white,
+  },
+}));
+
 function RootNavigation() {
   return (
     <BrowserRouter>
-      <Box className='main-container'>
+      <StyledBox className='main-container'>
         <ErrorBoundary>
           <NavBar />
           <Box className='body-container'>
@@ -40,7 +45,7 @@ function RootNavigation() {
             </Box>
           </Box>
         </ErrorBoundary>
-      </Box>
+      </StyledBox>
     </BrowserRouter>
   );
 }

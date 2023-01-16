@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { LazyExoticComponent, Suspense } from 'react';
 import { Spinner } from '~/components/core';
 

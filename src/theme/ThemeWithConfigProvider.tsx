@@ -1,8 +1,14 @@
 import React, { PropsWithChildren } from 'react';
+import { useAppTheme } from './core';
 import ThemeProvider from './ThemeProvider';
-import useAppTheme from './useAppTheme';
+import CssBaseline from '@mui/material/CssBaseline';
 
-export default function ThemeWithConfigProvider({ children }: PropsWithChildren) {
+export function ThemeWithConfigProvider({ children }: PropsWithChildren) {
   const { theme } = useAppTheme();
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline enableColorScheme={true} />
+      {children}
+    </ThemeProvider>
+  );
 }

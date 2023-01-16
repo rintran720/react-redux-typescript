@@ -1,11 +1,11 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '~/store/config';
 import { themeSelector } from '~/store/theme/theme.selector';
 import { ThemeMode } from '~/types';
 import { themeActions } from '../store/theme/theme.slice';
 import { darkTheme, lightTheme } from './config';
 
-function useAppTheme() {
+export function useAppTheme() {
   const mode = useAppSelector(themeSelector);
   const dispatch = useAppDispatch();
 
@@ -16,7 +16,7 @@ function useAppTheme() {
     [dispatch],
   );
 
-  return { theme: mode === 'dark' ? darkTheme : lightTheme, setAppTheme, mode };
-}
+  const isDark = useMemo(() => mode === 'dark', [mode]);
 
-export default useAppTheme;
+  return { theme: mode === 'dark' ? darkTheme : lightTheme, setAppTheme, mode, isDark };
+}

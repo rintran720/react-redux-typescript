@@ -28,6 +28,7 @@ const persistedReducer = persistReducer<CombinedAppState, AnyAction>(persistConf
 export const store = configureStore({
   reducer: persistedReducer,
   devTools: !isProduction(),
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   middleware: (getDefaultMiddleware: any) => {
     const defaultMiddlewares = getDefaultMiddleware({
       serializableCheck: {

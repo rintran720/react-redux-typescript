@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import { useCallback, useState } from 'react';
-import { axiosTransform } from '~/api/manual/axios';
 import { APIResponse } from '~/types/index';
+import { axiosTransform } from '~/utils/transforms';
 import { RequestIntoAPIHook } from './useAPI';
 
 function useAxiosAPI<T>({ request }: RequestIntoAPIHook<AxiosResponse<T>, T>) {

@@ -6,6 +6,13 @@ import SendIcon from '@mui/icons-material/Send';
 import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 import { Link } from '~/components/route';
 import './styles.scss';
+import { styled } from '~/theme/core';
+
+const StyledTypography = styled(Typography)(({ theme }) => ({
+  ['&']: {
+    color: theme.palette.common.black,
+  },
+}));
 
 function NavListComponent() {
   return (
@@ -16,7 +23,7 @@ function NavListComponent() {
             <ListItemIcon>
               <SendIcon fontSize='small' />
             </ListItemIcon>
-            <Typography variant='inherit'>Profile</Typography>
+            <StyledTypography variant='inherit'>Profile</StyledTypography>
           </Link>
         </MenuItem>
         <MenuItem>
@@ -24,7 +31,7 @@ function NavListComponent() {
             <ListItemIcon>
               <PriorityHighIcon fontSize='small' />
             </ListItemIcon>
-            <Typography variant='inherit'>Settings</Typography>
+            <StyledTypography variant='inherit'>Settings</StyledTypography>
           </Link>
         </MenuItem>
 
@@ -33,9 +40,9 @@ function NavListComponent() {
             <ListItemIcon>
               <DraftsIcon fontSize='small' />
             </ListItemIcon>
-            <Typography variant='inherit' noWrap>
+            <StyledTypography variant='inherit' noWrap>
               Notification
-            </Typography>
+            </StyledTypography>
           </Link>
         </MenuItem>
       </MenuList>

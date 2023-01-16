@@ -6,15 +6,13 @@
 
   &__content {
     position: fixed;
-    height: 40px;
+    height: 60px;
     padding: 10px;
-    width: calc(100vw - 260px);
+    width: calc(100vw - 240px);
     display: flex;
     align-items: center;
     border-bottom: 1px solid #e5e9ec;
-    border-left: 1px solid #e5e9ec;
     justify-content: space-between;
-    background-color: rgba(252, 252, 252, 0.762);
   }
 
   .account {

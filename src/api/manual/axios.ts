@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosResponse } from 'axios';
 import { API_URL } from '~/utils/env';
 import { getAccessToken } from '~/utils/localStorage';
@@ -31,7 +32,3 @@ Axios.interceptors.request.use(
 // });
 
 export default Axios;
-
-export function axiosTransform<T>(axiosResponse: AxiosResponse<T>) {
-  return axiosResponse.data;
-}

@@ -2,8 +2,7 @@ import React, { useCallback } from 'react';
 import { Button, Typography } from '~/components/core';
 import { Link } from '~/components/route';
 import './styles.scss';
-import { styled } from '@mui/material';
-import useAppTheme from '../../../theme/useAppTheme';
+import { useAppTheme, styled } from '~/theme/core';
 
 const PREFIX = 'HomeComponent';
 const classes = {
@@ -13,16 +12,15 @@ const classes = {
   intro: `${PREFIX}-intro`,
 };
 
-const Root = styled('div')(({ theme }) => ({
+const Root = styled('div')(() => ({
   [`&.${classes.root}`]: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    // backgroundColor: theme.palette.primary.main,
   },
 }));
 
-const TypographyR = styled(Typography)(({ theme }) => ({
+const StyledTypography = styled(Typography)(({ theme }) => ({
   [`&.${classes.cta}`]: {
     color: theme.palette.primary.dark,
   },
@@ -41,16 +39,14 @@ export interface HomeComponentProps {
 function HomeComponent({ name }: HomeComponentProps) {
   const { mode, setAppTheme } = useAppTheme();
   const changeThemeMode = useCallback(() => {
-    console.log('set theme from', mode);
     setAppTheme(mode == 'dark' ? 'light' : 'dark');
   }, [mode, setAppTheme]);
 
   return (
     <Root className={classes.root}>
-      <TypographyR className={classes.cta}>Hi {name}</TypographyR>
-      <TypographyR className={classes.content}>Hi {name}</TypographyR>
+      <StyledTypography className={classes.content}>Hi {name}, Click to change theme of website</StyledTypography>
       <Button onClick={changeThemeMode}>{mode}</Button>
-      <TypographyR>Click below button to navigate to other screen</TypographyR>
+      <StyledTypography>Click below button to navigate to other screen</StyledTypography>
       <Link to='/profile'>
         <Button color={'primary'}>Go to Profile</Button>
       </Link>

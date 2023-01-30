@@ -10,4 +10,13 @@ export async function getAccessToken() {
   }
 }
 
+export async function getAccessTokenForPetStore() {
+  try {
+    const token = await storage.getItem(ACCESS_TOKEN_STORAGE_KEY);
+    return token || 'default token 2';
+  } catch (e) {
+    return 'error token';
+  }
+}
+
 export const Storage = storage;

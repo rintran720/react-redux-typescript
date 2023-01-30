@@ -27,6 +27,7 @@ import {
 } from '@mui/material';
 import { Button } from './Button';
 import Spinner from './Spinner';
+import Image from './Image';
 
 export {
   Avatar,
@@ -56,4 +57,5 @@ export {
   Paper,
   MenuList,
   MenuItem,
+  Image,
 };

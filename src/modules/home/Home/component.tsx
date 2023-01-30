@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
-import { Button, Typography } from '~/components/core';
+import { Button, Typography, Box } from '~/components/core';
 import { Link } from '~/components/route';
-import './styles.scss';
 import { useAppTheme, styled } from '~/theme/core';
 
 const PREFIX = 'HomeComponent';

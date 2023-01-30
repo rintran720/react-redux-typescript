@@ -1,7 +1,7 @@
 import React, { ComponentProps, lazy } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'; // import '~/languages/i18n';
 import withSuspense from '~/hocs/withSuspense';
-import './style.scss';
+// import './style.scss';
 import { Box } from '~/components/core';
 import { styled } from '~/theme/core';
 
@@ -15,22 +15,41 @@ const NotFound = lazy(() => import('~/pages/NotFound'));
 const NavBar = lazy(() => import('~/containers/NavBar'));
 const TopBar = lazy(() => import('~/containers/TopBar'));
 
+const PREFIX = 'App';
+const classes = {
+  root: `${PREFIX}-root`,
+  body: `${PREFIX}-body`,
+  content: `${PREFIX}-content`,
+};
+
 const StyledBox = styled(Box)(({ theme }) => ({
-  ['&']: {
+  [`&.${classes.root}`]: {
+    minWidth: '100wh',
+    minHeight: '100vh',
     color: theme.palette.common.black,
     backgroundColor: theme.palette.common.white,
+    display: 'flex',
+  },
+  [`&.${classes.body}`]: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  [`&.${classes.content}`]: {
+    flex: 1,
+    width: '100%',
   },
 }));
 
 function RootNavigation() {
   return (
     <BrowserRouter>
-      <StyledBox className='main-container'>
+      <StyledBox className={classes.root}>
         <ErrorBoundary>
           <NavBar />
-          <Box className='body-container'>
+          <StyledBox className={classes.body}>
             <TopBar />
-            <Box className='content-container'>
+            <StyledBox className={classes.content}>
               <Routes>
                 <Route path='/'>
                   <Route index element={withSuspense<ComponentProps<typeof Home>>(Home, { name: 'John Smith' })} />
@@ -42,8 +61,8 @@ function RootNavigation() {
                   <Route path='*' element={withSuspense(NotFound)} />
                 </Route>
               </Routes>
-            </Box>
-          </Box>
+            </StyledBox>
+          </StyledBox>
         </ErrorBoundary>
       </StyledBox>
     </BrowserRouter>

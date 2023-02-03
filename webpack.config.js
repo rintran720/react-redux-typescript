@@ -7,6 +7,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const { DefinePlugin } = require('webpack');
+const CspHtmlWebpackPlugin = require('csp-html-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -73,6 +74,26 @@ const config = {
       favicon: './public/favicon.ico',
       inject: 'body',
     }),
+    new CspHtmlWebpackPlugin(
+      {
+        'base-uri': "'self'",
+        'object-src': "'none'",
+        'script-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'", 'https://vitals.vercel-insights.com'],
+        'style-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'", 'https://fonts.googleapis.com'],
+      },
+      {
+        enabled: true,
+        hashingMethod: 'sha256',
+        hashEnabled: {
+          'script-src': true,
+          'style-src': true,
+        },
+        nonceEnabled: {
+          'script-src': true,
+          'style-src': true,
+        },
+      },
+    ),
   ],
 };
 
@@ -80,6 +101,9 @@ if (isProd) {
   config.plugins.push(
     new CopyWebpackPlugin({
       patterns: [
+        { from: 'public/maskable_icon.png' },
+        { from: 'public/logo16.png' },
+        { from: 'public/logo32.png' },
         { from: 'public/logo192.png' },
         { from: 'public/logo512.png' },
         { from: 'public/manifest.json' },

@@ -30,7 +30,7 @@ function NavListComponent() {
     <StyledBox className={classes.root}>
       <MenuList>
         <MenuItem>
-          <Link className='nav-list__link' to={'/profile'}>
+          <Link className='nav-list__link' href={'/profile'}>
             <ListItemIcon>
               <SendIcon fontSize='small' />
             </ListItemIcon>
@@ -38,7 +38,7 @@ function NavListComponent() {
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link className='nav-list__link' to={'/settings'}>
+          <Link className='nav-list__link' href={'/settings'}>
             <ListItemIcon>
               <PriorityHighIcon fontSize='small' />
             </ListItemIcon>
@@ -47,7 +47,7 @@ function NavListComponent() {
         </MenuItem>
 
         <MenuItem>
-          <Link className='nav-list__link' to={'/notifications'}>
+          <Link className='nav-list__link' href={'/notifications'}>
             <ListItemIcon>
               <DraftsIcon fontSize='small' />
             </ListItemIcon>

@@ -46,13 +46,13 @@ function HomeComponent({ name }: HomeComponentProps) {
       <StyledTypography className={classes.content}>Hi {name}, Click to change theme of website</StyledTypography>
       <Button onClick={changeThemeMode}>{mode}</Button>
       <StyledTypography>Click below button to navigate to other screen</StyledTypography>
-      <Link to='/profile'>
+      <Link href='/profile'>
         <Button color={'primary'}>Go to Profile</Button>
       </Link>
-      <Link to='/settings'>
+      <Link href='/settings'>
         <Button color={'success'}>Go to Settings</Button>
       </Link>
-      <Link to='/notifications'>
+      <Link href='/notifications'>
         <Button color={'secondary'}>Go to Notification</Button>
       </Link>
     </Root>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from '~/navigation/navigationHooks';
-import Logo1 from '~/images/logo1.png';
+import Logo1 from '~/images/logo1.webp';
 import { Box, Image } from '~/components/core';
 import NavList from '~/containers/NavList';
 import { styled } from '~/theme/core';
@@ -47,7 +47,15 @@ function NavBarComponent() {
     <StyledBox className={classes.root}>
       <StyledBox className={classes.content}>
         <StyledBox className={classes.logo_container}>
-          <Image className='logo' alt='home' src={Logo1} onClick={() => navigate('/')} height={60} />
+          <Image
+            className='logo'
+            alt='home'
+            src={Logo1}
+            onClick={() => navigate('/')}
+            loading={'lazy'}
+            height={60}
+            width={180}
+          />
         </StyledBox>
         <NavList />
       </StyledBox>

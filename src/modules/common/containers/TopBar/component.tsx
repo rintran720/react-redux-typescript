@@ -62,11 +62,11 @@ function TopBarComponent() {
     <StyledBox className={classes.root}>
       <StyledBox className={classes.content}>
         <StyledIconButton className={classes.within_icon}>
-          <Image alt='menu' src={isDark ? MenuLightImg : MenuImg} height={36} />
+          <Image alt='menu' src={isDark ? MenuLightImg : MenuImg} height={36} width={36} loading={'lazy'} />
         </StyledIconButton>
         <StyledBox className={classes.account}>
           <Avatar alt='avatar'>
-            <Image src={AvatarImg} alt={'avatar'} height={46} />
+            <Image src={AvatarImg} alt={'avatar'} height={46} width={46} loading={'lazy'} />
           </Avatar>
           <StyledTypography className={classes.account_name}>John Smith</StyledTypography>
         </StyledBox>

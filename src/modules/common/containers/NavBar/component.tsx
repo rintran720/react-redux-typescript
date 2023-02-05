@@ -47,15 +47,7 @@ function NavBarComponent() {
     <StyledBox className={classes.root}>
       <StyledBox className={classes.content}>
         <StyledBox className={classes.logo_container}>
-          <Image
-            className='logo'
-            alt='home'
-            src={Logo1}
-            onClick={() => navigate('/')}
-            loading={'lazy'}
-            height={60}
-            width={180}
-          />
+          <Image className='logo' alt='home' src={Logo1} onClick={() => navigate('/')} height={60} width={180} />
         </StyledBox>
         <NavList />
       </StyledBox>

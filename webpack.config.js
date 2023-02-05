@@ -74,26 +74,6 @@ const config = {
       favicon: './public/favicon.ico',
       inject: 'body',
     }),
-    new CspHtmlWebpackPlugin(
-      {
-        'base-uri': "'self'",
-        'object-src': "'none'",
-        'script-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'", 'https://vitals.vercel-insights.com'],
-        'style-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'", 'https://fonts.googleapis.com'],
-      },
-      {
-        enabled: true,
-        hashingMethod: 'sha256',
-        hashEnabled: {
-          'script-src': true,
-          'style-src': true,
-        },
-        nonceEnabled: {
-          'script-src': true,
-          'style-src': true,
-        },
-      },
-    ),
   ],
 };
 
@@ -129,6 +109,26 @@ if (isProd) {
       swDest: 'sw.js',
       maximumFileSizeToCacheInBytes: 25 * 1024 * 1024, // 25 MB
     }),
+    new CspHtmlWebpackPlugin(
+      {
+        'base-uri': "'self'",
+        'object-src': "'none'",
+        'script-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'", 'https://vitals.vercel-insights.com'],
+        'style-src': ["'unsafe-inline'", "'self'", "'unsafe-eval'", 'https://fonts.googleapis.com'],
+      },
+      {
+        enabled: true,
+        hashingMethod: 'sha256',
+        hashEnabled: {
+          'script-src': true,
+          'style-src': true,
+        },
+        nonceEnabled: {
+          'script-src': true,
+          'style-src': true,
+        },
+      },
+    ),
     // new BundleAnalyzerPlugin(), // View bundle.js stat
   );
 

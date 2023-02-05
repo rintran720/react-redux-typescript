@@ -24,7 +24,7 @@ function OopsComponent() {
   const { height } = useWindowDimensions();
   return (
     <StyledDiv className={classes.root}>
-      <Image alt='oops' src={OopsImg} loading={'lazy'} height={height} width={'auto'} />
+      <Image alt='oops' src={OopsImg} height={height} width={'auto'} />
     </StyledDiv>
   );
 }
